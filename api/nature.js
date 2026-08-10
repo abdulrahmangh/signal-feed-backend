@@ -3,7 +3,8 @@
 
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate=600");
+  res.setHeader("Cache-Control", "no-store");
+
 
   const apiKey = process.env.PEXELS_API_KEY;
   if (!apiKey) {
