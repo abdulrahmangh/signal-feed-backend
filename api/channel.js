@@ -45,6 +45,25 @@ export default async function handler(req, res) {
 
   // Newest-first, matching how the feed should scroll
   posts.reverse();
+    // Skip stickers/empty posts (no text and no image) and skip
+  // personal/announcement-style posts (graduations, weddings, etc.)
+  // and posts written mostly in English.
+  const PERSONAL_KEYWORDS = ["أعلن", "تخرج", "تخرجي", "زواج", "زفاف", "خطبتي", "مولود", "ولادة", "بمعدل", "بتقدير", "البكالوريوس"];
+  function isEnglish(text) {
+    if (!text) return false;
+    const letters = text.replace(/[^a-zA-Z\u0600-\u06FF]/g, "");
+    if (!letters.length) return false;
+    const englishCount = (text.match(/[a-zA-Z]/g) || []).length;
+    return englishCount / letters.length > 0.5;
+  }
+  posts = posts.filter(function (p) {
+    const content = p.text || p.caption || "";
+    if (!content && !p.imageUrl) return false; // stickers / empty posts
+    if (isEnglish(content)) return false;
+    if (PERSONAL_KEYWORDS.some(function (kw) { return content.indexOf(kw) !== -1; })) return false;
+    return true;
+  });
+
 
   if (sinceId) {
     const cutoff = parseInt(sinceId, 10);
