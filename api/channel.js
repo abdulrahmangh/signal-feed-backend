@@ -48,7 +48,7 @@ export default async function handler(req, res) {
     // Skip stickers/empty posts (no text and no image) and skip
   // personal/announcement-style posts (graduations, weddings, etc.)
   // and posts written mostly in English.
-  const PERSONAL_KEYWORDS = ["أعلن", "تخرج", "تخرجي", "زواج", "زفاف", "خطبتي", "مولود", "ولادة", "بمعدل", "بتقدير", "البكالوريوس"];
+  const PERSONAL_KEYWORDS = ["أعلن", "تخرج", "تخرجي", "زواج", "عيد", "خطبتي", "مولود", "ولادة", "بمعدل", "بتقدير", "البكالوريوس"];
   function isEnglish(text) {
     if (!text) return false;
     const letters = text.replace(/[^a-zA-Z\u0600-\u06FF]/g, "");
