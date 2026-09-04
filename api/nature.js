@@ -1,5 +1,41 @@
 // GET /api/nature — returns a random real nature/landscape photo URL,
 // sourced from Pexels' curated nature category.
+// Uses a rotating list of specific nature scene types for variety,
+// restricted to purely natural subjects — no buildings, roads, or other
+// human-made structures, and only animal types known to be appropriate.
+
+const NATURE_QUERIES = [
+  "forest canopy trees",
+  "ocean waves aerial",
+  "mountain range clouds",
+  "waterfall rainforest",
+  "desert dunes wind",
+  "northern lights sky",
+  "deer forest wildlife",
+  "eagle flying wildlife",
+  "horses running field",
+  "dolphin ocean wildlife",
+  "coral reef underwater",
+  "misty forest morning",
+  "river rapids nature",
+  "autumn forest leaves",
+  "snow mountain peak",
+  "tropical jungle canopy",
+  "starry night sky",
+  "meadow wildflowers wind",
+  "clouds sky sunset",
+  "birds flying nature",
+  "lake reflection mountains",
+  "grass field wind",
+  "sunset ocean horizon",
+  "cherry blossom spring",
+  "sand dunes desert",
+  "green valley hills",
+  "rainy forest leaves",
+  "butterfly flower macro",
+  "moonlight clouds night",
+  "canyon rock formation"
+];
 
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -11,11 +47,12 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: "PEXELS_API_KEY not set" });
   }
 
-  const page = Math.floor(Math.random() * 50) + 1;
+  const query = NATURE_QUERIES[Math.floor(Math.random() * NATURE_QUERIES.length)];
+  const page = Math.floor(Math.random() * 30) + 1;
 
   try {
     const upstream = await fetch(
-      `https://api.pexels.com/v1/search?query=nature%20landscape&per_page=1&page=${page}&orientation=portrait`,
+      `https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}&per_page=1&page=${page}&orientation=portrait`,
       { headers: { Authorization: apiKey } }
     );
     const data = await upstream.json();
