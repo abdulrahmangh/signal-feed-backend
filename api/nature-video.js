@@ -13,15 +13,15 @@ const NATURE_QUERIES = [
  
   "misty forest morning",
   "river rapids nature",
-  "autumn forest leaves",
+  
   "snow mountain peak",
-  "tropical jungle canopy",
+  
   "starry night sky",
-  "meadow wildflowers wind",
+ 
   "clouds timelapse sky",
   
   "lake reflection mountains",
-  "grass field wind",
+  
   "sunset ocean horizon"
 ];
 
