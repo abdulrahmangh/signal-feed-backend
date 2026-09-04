@@ -1,5 +1,30 @@
 // GET /api/nature-video — returns a real nature/landscape video URL,
 // sourced from Pexels' curated video library.
+// Restricted to purely natural scenes (forests, oceans, mountains, wildlife, sky) —
+// no buildings, roads, boats, or other human-made structures.
+
+const NATURE_QUERIES = [
+  "forest canopy trees",
+  "ocean waves aerial",
+  "mountain range clouds",
+  "waterfall rainforest",
+  "desert dunes wind",
+  "northern lights sky",
+  "wildlife animals nature",
+  "coral reef underwater",
+  "misty forest morning",
+  "river rapids nature",
+  "autumn forest leaves",
+  "snow mountain peak",
+  "tropical jungle canopy",
+  "starry night sky",
+  "meadow wildflowers wind",
+  "clouds timelapse sky",
+  "birds flying nature",
+  "lake reflection mountains",
+  "grass field wind",
+  "sunset ocean horizon"
+];
 
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -10,11 +35,12 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: "PEXELS_API_KEY not set" });
   }
 
-  const page = Math.floor(Math.random() * 30) + 1;
+  const query = NATURE_QUERIES[Math.floor(Math.random() * NATURE_QUERIES.length)];
+  const page = Math.floor(Math.random() * 20) + 1;
 
   try {
     const upstream = await fetch(
-      `https://api.pexels.com/videos/search?query=nature%20landscape&per_page=1&page=${page}&orientation=portrait`,
+      `https://api.pexels.com/videos/search?query=${encodeURIComponent(query)}&per_page=1&page=${page}&orientation=portrait`,
       { headers: { Authorization: apiKey } }
     );
     const data = await upstream.json();
