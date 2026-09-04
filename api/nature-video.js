@@ -8,7 +8,7 @@ const NATURE_QUERIES = [
   "ocean waves aerial",
   "mountain range clouds",
   "waterfall rainforest",
-  "desert dunes wind",
+  
   "northern lights sky",
  
   "misty forest morning",
@@ -19,7 +19,7 @@ const NATURE_QUERIES = [
   "starry night sky",
   "meadow wildflowers wind",
   "clouds timelapse sky",
-  "birds flying nature",
+  
   "lake reflection mountains",
   "grass field wind",
   "sunset ocean horizon"
