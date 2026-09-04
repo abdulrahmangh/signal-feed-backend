@@ -10,8 +10,7 @@ const NATURE_QUERIES = [
   "waterfall rainforest",
   "desert dunes wind",
   "northern lights sky",
-  "wildlife animals nature",
-  "coral reef underwater",
+ 
   "misty forest morning",
   "river rapids nature",
   "autumn forest leaves",
