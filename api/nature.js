@@ -9,30 +9,30 @@ const NATURE_QUERIES = [
   "ocean waves aerial",
   "mountain range clouds",
   "waterfall rainforest",
-  "desert dunes wind",
+  
   "northern lights sky",
   "deer forest wildlife",
   "eagle flying wildlife",
   "horses running field",
   "dolphin ocean wildlife",
-  "coral reef underwater",
+  
   "misty forest morning",
   "river rapids nature",
-  "autumn forest leaves",
+
   "snow mountain peak",
   "tropical jungle canopy",
   "starry night sky",
-  "meadow wildflowers wind",
+ 
   "clouds sky sunset",
-  "birds flying nature",
+
   "lake reflection mountains",
-  "grass field wind",
+
   "sunset ocean horizon",
   "cherry blossom spring",
   "sand dunes desert",
   "green valley hills",
   "rainy forest leaves",
-  "butterfly flower macro",
+  
   "moonlight clouds night",
   "canyon rock formation"
 ];
